@@ -1,6 +1,7 @@
 // List of URLs to remove prompt=select_account
 let listOfAadSso = [
-  "https://appcenter.ms/auth/aad/callback"
+  "https://appcenter.ms/auth/aad/callback",
+  "https://loop.microsoft.com/authLanding.html"
 ] 
 
 // Get AAD signin status
