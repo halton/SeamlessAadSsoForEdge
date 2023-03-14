@@ -1,26 +1,27 @@
 {
-  "manifest_version": 2,
   "name": "Seamless SSO for AAD on Edge",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "manifest_version": 3,
   "description": "Use the browser's profile when signing into Microsoft sites.",
   "homepage_url": "https://github.com/halton/SeamlessAadSsoForEdge.git",
-  "permissions": [
-    "identity",
-    "identity.email",
-    "webRequest",
-    "webRequestBlocking",
-    "*://login.microsoftonline.com/*",
-    "https://odc.officeapps.live.com"
-  ],
   "author": "Halton Huo<halton.huo@gmail.com>",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
- },
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "identity",
+    "identity.email"
+  ],
   "background": {
-    "persistent":  true,
-    "scripts": [ "src/background.js" ]
-  }
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "*://login.microsoftonline.com/*",
+    "*://odc.officeapps.live.com/*"
+  ]
 }
