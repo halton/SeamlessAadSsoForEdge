@@ -3,7 +3,7 @@
 // List of URLs to remove prompt=select_account
 const noPromptURLs = [
   'https://appcenter.ms/auth/aad/callback',
-  'https://loop.microsoft.com/authLanding.html]'
+  'https://loop.microsoft.com/authLanding.html'
 ]
 
 // Get AAD signin status
