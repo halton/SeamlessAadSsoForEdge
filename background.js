@@ -1,9 +1,7 @@
-
 // background.js
 
 // List of URLs to remove prompt=select_account
-// TODO（halton): Use this list to add rule one by one
-const listOfAadSso = [
+const noPromptURLs = [
   'https://appcenter.ms/auth/aad/callback',
   'https://loop.microsoft.com/authLanding.html]'
 ]
@@ -18,14 +16,14 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
       return;
     }
 
-    // Remove rules first
+    // Cleanup the rules first
     chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: [1, 2]
+      removeRuleIds: noPromptURLs.map((element, index) => index + 1)
     });
 
-    const rules = [
-      {
-        "id": 1,
+    const rules = noPromptURLs.map((element, index) => {
+      return {
+        "id": index + 1,
         "priority": 1,
         "action": {
           "type": "redirect",
@@ -38,33 +36,14 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
           }
         },
         "condition": {
-          "regexFilter": "^https://login\.microsoftonline\.com/.*/authorize\?(&|.*)redirect_uri=" + encodeURI('https://appcenter.ms/auth/aad/callback'),
-          "resourceTypes": ["main_frame"]
-        }
-      },
-      {
-        "id": 2,
-        "priority": 1,
-        "action": {
-          "type": "redirect",
-          "redirect": {
-            "transform": {
-              "queryTransform": {
-                "removeParams": [ "prompt" ]
-              }
-            }
-          }
-        },
-        "condition": {
-          "regexFilter": "^https://login\.microsoftonline\.com/.*/authorize\?(&|.*)redirect_uri=" + encodeURI('https://loop.microsoft.com/authLanding.html'),
+          "regexFilter": "^https://login\.microsoftonline\.com/.*/authorize\?(&|.*)redirect_uri=" + encodeURI(element),
           "resourceTypes": ["main_frame"]
         }
       }
-    ];
+    })
 
     chrome.declarativeNetRequest.updateDynamicRules({
-      addRules: rules,
-      removeRuleIds: []
+      addRules: rules
     });
   })
 });
