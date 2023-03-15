@@ -43,5 +43,5 @@ If there are multiple AAD signed profiles, an extra step is required to enable a
 * [App Center](https://appcenter.ms)
 
 ## Credits
-
-* Icon is from https://www.flaticon.com/free-icon/cloud-computing_1474848?term=single+sign+on&page=1&position=37&origin=tag&related_id=1474848.
+* [ChatGPT](https://chat.openai.com/) -- I asked a lot of questions on Chrome Extension, JavaScript, and even examples, although sometimes the examples can not work perfectly. :)
+* Icon is from https://www.flaticon.com/free-icon/cloud-computing_1474848.
