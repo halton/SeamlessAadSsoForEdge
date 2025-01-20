@@ -1,27 +1,34 @@
 {
-  "name": "Seamless SSO for AAD on Edge",
-  "version": "1.0.3",
   "manifest_version": 3,
-  "description": "Use the browser's profile when signing into Microsoft sites.",
-  "homepage_url": "https://github.com/halton/SeamlessAadSsoForEdge.git",
-  "author": "Halton Huo<halton.huo@gmail.com>",
-  "icons": {
-    "16": "images/icon-16.png",
-    "32": "images/icon-32.png",
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
-  },
+  "name": "Remove Prompt Parameter",
+  "version": "1.0",
+  "description": "Removes prompt=select_account from Microsoft login URLs",
   "permissions": [
-    "declarativeNetRequest",
-    "declarativeNetRequestFeedback",
+    "tabs",
     "identity",
     "identity.email"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "host_permissions": [
     "*://login.microsoftonline.com/*",
-    "*://odc.officeapps.live.com/*"
-  ]
+    "*://odc.officeapps.live.com/*",
+    "*://appcenter.ms/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://appcenter.ms/*"],
+      "js": ["appcenter-content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "microsoft-login.js"
+  },
+
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "default_title": "Enable or Disable Prompt Parameter (Click to toggle)"
+  }
 }
