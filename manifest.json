@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Remove Prompt Parameter",
-  "version": "1.0",
+  "name": "Seamless SSO for AAD on Edge",
+  "version": "1.0.4",
   "description": "Removes prompt=select_account from Microsoft login URLs",
   "permissions": [
     "tabs",
