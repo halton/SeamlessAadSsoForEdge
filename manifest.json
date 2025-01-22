@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Seamless SSO for AAD on Edge",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Removes prompt=select_account from Microsoft login URLs",
   "permissions": [
     "tabs",
@@ -11,12 +11,17 @@
   "host_permissions": [
     "*://login.microsoftonline.com/*",
     "*://odc.officeapps.live.com/*",
-    "*://appcenter.ms/*"
+    "*://appcenter.ms/*",
+    "*://loop.cloud.microsoft/*"
   ],
   "content_scripts": [
     {
       "matches": ["*://appcenter.ms/*"],
       "js": ["appcenter-content.js"]
+    },
+    {
+      "matches": ["*://loop.cloud.microsoft/*"],
+      "js": ["loop-content.js"]
     }
   ],
   "background": {
