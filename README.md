@@ -42,6 +42,7 @@ If there are multiple AAD signed profiles, an extra step is required to enable a
 * [App Center](https://appcenter.ms)
 * [OCV](https://ocv.microsoft.com/)
 * [Loop](https://loop.cloud.microsoft/)
+* [ICM Portal](https://portal.microsofticm.com/)
 
 ## Credits
 * [ChatGPT](https://chat.openai.com/) -- I asked a lot of questions on Chrome Extension, JavaScript, and even examples, although sometimes the examples can not work perfectly. :)
