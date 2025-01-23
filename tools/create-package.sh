@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change to parent directory
+cd "$(dirname "$0")/.."
+
 # Extract version from manifest.json
 version=$(grep '"version"' manifest.json | cut -d'"' -f4)
 
@@ -12,15 +15,13 @@ rm -f SeamlessAadSsoForEdge*.zip
 
 # Create temporary file list and exclude unwanted files
 echo "Creating package list..."
-
-# First, add root level files
 find . -maxdepth 1 \( \
     -name "*.json" -o \
     -name "*.js" -o \
     -name "*.md" -o \
     -name "LICENSE" \
     \) -type f \
-    ! -name "create-package.sh" \
+    ! -path "./tools/*" \
     ! -name ".DS_Store" \
     -print0 | xargs -0 zip "$zipname"
 

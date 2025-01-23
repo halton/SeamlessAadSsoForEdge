@@ -1,6 +1,9 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+:: Change to parent directory
+cd ..
+
 :: Extract version from manifest.json
 for /f "tokens=2 delims=:," %%a in ('type manifest.json ^| findstr "version"') do (
     set "version=%%a"
