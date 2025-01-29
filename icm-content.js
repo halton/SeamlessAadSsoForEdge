@@ -2,8 +2,8 @@
 function handleSignIn() {
   console.log('handleSignIn function called for ICM Portal');
 
-  // Find element using XPath with ID
-  const xpath = '//*[@id="signInButton"]';
+  // Find element using specific XPath
+  const xpath = '/html/body/div/div/div/div[1]/div/div/div[2]/main/div[1]/div[1]/button[1]';
   const matchingElement = document.evaluate(
     xpath,
     document,
